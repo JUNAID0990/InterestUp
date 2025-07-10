@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: interestup-app
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    autoDeploy: true
+    envVars:
+      - key: SECRET_KEY
+        value: your-secret-key-here
+      - key: FLASK_ENV
+        value: development
+      - key: DEBUG
+        value: fulse
+      - key: MONGODB_URI
+        value: mongodb+srv://jk23006745:eVhRUyr9CM3ujPe3@cluster0.94wqntu.mongodb.net/
+      - key: DB_NAME
+        value: InterestUp
+      - key: MAX_CONTENT_LENGTH
+        value: "16777216"
+      - key: UPLOAD_FOLDER
+        value: static/uploads
+      - key: MAIL_SERVER
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: "587"
+      - key: MAIL_USE_TLS
+        value: True
+      - key: MAIL_USERNAME
+        value: your-email@gmail.com
+      - key: MAIL_PASSWORD
+        value: your-app-specific-password
