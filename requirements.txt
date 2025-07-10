@@ -1,3 +1,4 @@
+gunicorn
 setuptools
 wheel
 flask==2.0.1
