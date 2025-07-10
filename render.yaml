@@ -3,7 +3,7 @@ services:
     name: interestup-app
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
+    startCommand: "gunicorn your_application.wsgi"
     autoDeploy: true
     envVars:
       - key: SECRET_KEY
