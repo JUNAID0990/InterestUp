@@ -1,3 +1,4 @@
+dnspython
 gunicorn
 setuptools
 wheel
