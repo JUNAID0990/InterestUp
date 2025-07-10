@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Investment Platform{% endblock %}
+
+{% block content %}
+<section class="container-fluid py-4 px-2 px-md-4">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h2 class="fw-bold text-primary">Admin Dashboard</h2>
+        </div>
+    </div>
+    <div class="row g-4 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Total Users</h6>
+                    <div class="display-4 fw-bold text-primary">{{ total_users }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Total Deposits</h6>
+                    <div class="display-4 fw-bold text-success">₹{{ total_deposits }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Pending Deposits</h6>
+                    <div class="display-4 fw-bold text-warning">₹{{ pending_deposits }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h6 class="text-muted">Pending Withdrawals</h6>
+                    <div class="display-4 fw-bold text-info">₹{{ pending_withdrawals }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0">
+                    <h5 class="mb-0 fw-bold text-primary">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <a href="{{ url_for('admin.deposits', status='pending') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Review Pending Deposits
+                            {% if pending_deposits > 0 %}
+                                <span class="badge bg-warning rounded-pill">₹{{ pending_deposits|int if pending_deposits == pending_deposits|int else '%.2f'|format(pending_deposits) }}</span>
+                            {% endif %}
+                        </a>
+                        <a href="{{ url_for('admin.withdrawals', status='pending') }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Review Pending Withdrawals
+                            {% if pending_withdrawals > 0 %}
+                                <span class="badge bg-warning rounded-pill">₹{{ pending_withdrawals|int if pending_withdrawals == pending_withdrawals|int else '%.2f'|format(pending_withdrawals) }}</span>
+                            {% endif %}
+                        </a>
+                        <a href="{{ url_for('admin.settings') }}" class="list-group-item list-group-item-action">
+                            Update Interest Rate
+                        </a>
+                        <a href="{{ url_for('admin.reports') }}" class="list-group-item list-group-item-action">
+                            Generate Reports
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0">
+                    <h5 class="mb-0 fw-bold text-primary">Export Reports</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <a href="{{ url_for('admin.reports', type='users') }}" class="list-group-item list-group-item-action">
+                            Export Users Report
+                        </a>
+                        <a href="{{ url_for('admin.reports', type='deposits') }}" class="list-group-item list-group-item-action">
+                            Export Deposits Report
+                        </a>
+                        <a href="{{ url_for('admin.reports', type='withdrawals') }}" class="list-group-item list-group-item-action">
+                            Export Withdrawals Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

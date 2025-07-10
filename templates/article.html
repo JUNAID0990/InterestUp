@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Article {{ article_id }}{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="glassmorphism-card shadow-lg p-4 mx-auto" style="max-width: 700px;">
+        <h1 class="display-5 mb-3">Article {{ article_id }}</h1>
+        <img src="{{ url_for('static', filename='img/article' ~ article_id ~ '.jpg') }}" class="img-fluid rounded mb-4" alt="Article Image">
+        <p class="lead">This is a sample article page. Replace this with dynamic content as needed.</p>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur consectetur, nisl nisi consectetur nisi, eu consectetur nisl nisi euismod nisi.</p>
+        <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

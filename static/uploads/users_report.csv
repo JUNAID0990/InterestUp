@@ -1,0 +1,3 @@
+full_name,email,phone,password,is_admin,created_at
+Bloggergo,jum@tyu.com,01234567890,pbkdf2:sha256:260000$hHWFRWrmWUzQhW48$bcd9375101314f51cb7b3ba428abe7157355d9eb82e7f1ad2d02f7f03df6e2bb,False,2025-06-26 13:36:30.545
+hahalo,hahalo@gmail.com,hahalo,pbkdf2:sha256:260000$tLoS8Nxqog4X4shW$a84f97e416e8510ea7ead6455c7e436b93123609ad0e89e50a37050923452f6e,False,2025-06-26 13:39:44.041

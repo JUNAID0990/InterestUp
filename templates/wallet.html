@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Wallet - Investment Platform{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card text-center">
+            <div class="card-header">
+                <h4 class="mb-0">Wallet Balance</h4>
+            </div>
+            <div class="card-body">
+                <h2 class="display-5">₹{{ '%.2f'|format(wallet_balance) }}</h2>
+                <!-- Removed available balance alert as requested -->
+                <p class="mb-1">Total Available Balance = Real-Time Interest</p>
+                <p class="mb-1">Total Deposited: ₹{{ '%.2f'|format(total_deposit) }}</p>
+                <p class="mb-1">Total Withdrawn: ₹{{ '%.2f'|format(total_withdrawal) }}</p>
+                <p class="mb-0 text-success fw-bold">Real-Time Interest: ₹{{ '%.2f'|format(real_time_interest) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

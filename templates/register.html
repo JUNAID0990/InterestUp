@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Register - Investment Platform{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center min-vh-100 bg-light" style="background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);">
+  <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 430px; width: 100%; background: rgba(255,255,255,0.88);">
+    <div class="text-center mb-4">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Company registration portal logo" class="rounded-circle border border-3 border-white shadow mb-2" style="width: 80px; height: 80px; background: #fff;">
+      <h2 class="fw-bold mt-2 mb-0" style="letter-spacing: 1px;">Create Account</h2>
+      <p class="text-muted small">Join us today and start your journey</p>
+    </div>
+    <form method="POST" autocomplete="off">
+
+      <div class="mb-3">
+        <label for="full_name" class="form-label fw-semibold">Full Name</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-person"></i></span>
+          <input type="text" class="form-control border-start-0" id="full_name" name="full_name" placeholder="Your full name" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Email address</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-envelope"></i></span>
+          <input type="email" class="form-control border-start-0" id="email" name="email" placeholder="you@email.com" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label fw-semibold">Phone</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-telephone"></i></span>
+          <input type="tel" class="form-control border-start-0" id="phone" name="phone" placeholder="Your phone number" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-lock"></i></span>
+          <input type="password" class="form-control border-start-0" id="password" name="password" placeholder="••••••••" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm rounded-pill">
+        <i class="bi bi-person-plus me-2"></i>Create Account
+      </button>
+    </form>
+    <div class="text-center mt-4">
+      <span class="text-muted small">Already have an account?</span>
+      <a href="{{ url_for('login') }}" class="fw-semibold text-primary ms-1">Sign in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

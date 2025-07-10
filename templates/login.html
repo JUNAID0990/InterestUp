@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Login - Investment Platform{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center min-vh-100 bg-light" style="background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);">
+  <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 400px; width: 100%; background: rgba(255,255,255,0.85);">
+    <div class="text-center mb-4">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Company logo" class="rounded-circle border border-3 border-white shadow mb-2" style="width: 80px; height: 80px; background: #fff;">
+      <h2 class="fw-bold mt-2 mb-0" style="letter-spacing: 1px;">Sign In</h2>
+      <p class="text-muted small">Access your investment dashboard</p>
+    </div>
+    <form method="POST" autocomplete="off">
+      {% if error %}
+      <div class="alert alert-danger animate__animated animate__fadeIn mb-3">{{ error }}</div>
+      {% endif %}
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Email address</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-envelope"></i></span>
+          <input type="email" class="form-control border-start-0" id="email" name="email" placeholder="you@email.com" required autofocus>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <div class="input-group">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-lock"></i></span>
+          <input type="password" class="form-control border-start-0" id="password" name="password" placeholder="••••••••" required>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="remember-me" name="remember-me">
+          <label class="form-check-label" for="remember-me">Remember me</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+          <label class="form-check-label" for="terms">
+            I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms & Conditions</a>
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm rounded-pill">
+        <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+      </button>
+    </form>
+    <div class="text-center mt-4">
+      <span class="text-muted small">Don't have an account?</span>
+      <a href="{{ url_for('register') }}" class="fw-semibold text-primary ms-1">Sign up</a>
+    </div>
+  </div>
+</div>
+<!-- Terms Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalLabel">Terms & Conditions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-start" style="max-height: 350px; overflow-y: auto;">
+        <ol>
+          <li>You must be 18 years or older to use this platform.</li>
+          <li>All investments are subject to market risk. Please read all scheme related documents carefully.</li>
+          <li>Your personal data will be handled securely and never shared without your consent.</li>
+          <li>By using this platform, you agree to comply with all applicable laws and regulations.</li>
+          <li>INVAST is not responsible for any losses incurred due to market fluctuations.</li>
+        </ol>
+        <p class="mt-3 small text-muted">For full details, please contact our support team.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+.glass-effect {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px) saturate(180%);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s, background 0.3s;
+}
+</style>
+{% endblock %}

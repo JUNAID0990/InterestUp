@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Investment Platform{% endblock %}
+
+{% block content %}
+<section class="hero-section d-flex align-items-center min-vh-100 bg-light position-relative overflow-hidden" style="background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 100%);">
+    <div class="container position-relative z-2">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-center text-lg-start mb-5 mb-lg-0 animate__animated animate__fadeInLeft">
+                <h1 class="display-3 fw-bold text-primary mb-3">Grow your wealth with <span class="text-gradient">InterestUp</span></h1>
+                <p class="lead mb-4">Modern, secure, and transparent investment platform.<br>Invest, track your returns, and manage your funds with confidence.</p>
+                {% if not current_user.is_authenticated %}
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-5 me-2 animate__animated animate__pulse animate__infinite">Get Started</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg px-5">Login</a>
+                {% else %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg px-5">Go to Dashboard</a>
+                {% endif %}
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info alert-dismissible fade show animate__animated animate__fadeInDown animate__faster mt-4" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="col-lg-6 text-center animate__animated animate__fadeInRight">
+                <div class="hero-img d-inline-block p-4" style="background: rgba(255,255,255,0.7); border-radius: 2rem; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12), 0 1.5px 6px 0 rgba(0,0,0,0.08);">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Invast Logo" style="max-width: 320px; width: 100%; height: auto; display: block; background: none; border-radius: 1.5rem;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+    .text-gradient {
+        background: linear-gradient(90deg, #ff6a00, #ffd800, #21d4fd, #b721ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero-img {
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+        border-radius: 2rem;
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(8px) saturate(180%);
+        margin-top: 1rem;
+    }
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        transition: box-shadow 0.2s, transform 0.2s;
+        display: block;
+        border-radius: 1rem;
+        cursor: pointer;
+    }
+    .card-link:hover .card, .card-link:focus .card {
+        box-shadow: 0 8px 32px 0 rgba(13,110,253,0.18), 0 2px 8px rgba(13,110,253,0.08);
+        transform: translateY(-4px) scale(1.03);
+    }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</section>
+
+<!-- How It Works Section -->
+<section class="features py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- <a href="{{ url_for('article', article_id=1) }}" class="card-link"> -->
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="/static/img/article1.png">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Getting Started</h5>
+                        <p class="card-text">Learn how to create your account and begin your investment journey.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <!-- <a href="{{ url_for('article', article_id=2) }}" class="card-link"> -->
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="/static/img/article2.png" alt="Deposit & Grow" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Deposit & Grow</h5>
+                        <p class="card-text">Discover how to deposit funds and maximize your returns daily.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <!-- <a href="{{ url_for('article', article_id=3) }}" class="card-link"> -->
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="/static/img/article3.png" alt="Security & Support" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Security & Support</h5>
+                        <p class="card-text">Read about our security measures and how we support you 24/7.</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e46a4b2f-14a2-457f-9040-28d4dd547d21.png" alt="About Invast" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-md-6">
+                <h2 class="fw-bold text-primary mb-3">About Us</h2>
+                <p class="mb-3">InterestUp is a next-generation investment platform designed for modern investors. We offer secure, transparent, and high-yield investment opportunities with real-time tracking and professional management.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Secure &amp; Transparent</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Real-Time Returns</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Professional Support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-4">
+            <div class="col d-flex justify-content-between align-items-center flex-wrap">
+                <div>
+                    <h2 class="fw-bold text-primary mb-0">Our Services</h2>
+                    <p class="text-muted mb-0">Everything you need to grow your wealth</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-currency-rupee text-primary display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">Flexible Investments</h5>
+                        <p class="card-text">Enjoy competitive interest rates and transparent terms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-graph-up-arrow text-success display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">Real-Time Tracking</h5>
+                        <p class="card-text">Monitor your investments, returns, and wallet balance in real time from any device.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="bi bi-shield-lock text-info display-4 mb-3"></i>
+                        <h5 class="card-title fw-bold">Secure Platform</h5>
+                        <p class="card-text">Your data and funds are protected with industry-leading security and compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+        .profile-btn {
+            border-radius: 2rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(13,110,253,0.08);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .profile-btn:hover, .profile-btn:focus {
+            background: #0d6efd;
+            color: #fff;
+            box-shadow: 0 8px 32px 0 rgba(13,110,253,0.18), 0 2px 8px rgba(13,110,253,0.08);
+        }
+        </style>
+    </div>
+</section>
+
+{% endblock %}

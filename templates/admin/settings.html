@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2>System Settings</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Interest Rate Settings</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="interest_rate" class="form-label">Global Interest Rate (%)</label>
+                        <input type="number" class="form-control" id="interest_rate" name="interest_rate" step="0.1" min="0" max="100" value="{{ settings.interest_rate }}" required>
+                        <small class="text-muted">This rate will be applied to all new deposits.</small>
+                    </div>
+                    {% if settings.updated_at %}
+                    <div class="mb-3">
+                        <small class="text-muted">Last updated: {{ settings.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                    </div>
+                    {% endif %}
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Update Interest Rate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

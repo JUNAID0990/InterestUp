@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}New Withdrawal - Investment Platform{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Request Withdrawal</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount (₹)</label>
+                        <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="1" max="{{ wallet_balance|float|round(2) }}" required>
+                        <small class="text-muted">
+                            You can only withdraw up to your total available balance: <strong>₹{{ '%.2f'|format(wallet_balance) }}</strong>.
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="account_info" class="form-label">Account Number or UPI ID</label>
+                        <input type="text" class="form-control" id="account_info" name="account_info" maxlength="100" required>
+                        <small class="text-muted">Enter the bank account number or UPI ID where you want to receive your withdrawal.</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="note" class="form-label">Note</label>
+                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                        <small class="text-muted">Please provide any relevant information for the withdrawal request.</small>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Request Withdrawal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

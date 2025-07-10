@@ -1,0 +1,5 @@
+user_id,amount,duration_months,interest_rate,expected_return,status,submitted_at,note,product_id,screenshot_url,user_full_name,user_email,approved_at
+685d44166f747bd00e38217d,1200.0,3,8.0,24.0,pending,2025-06-26 13:00:27.366,,324355454545454,uploads/20250626_130102_cast.jpg,Junaid Khan,jk23006745@gmail.com,
+685d44166f747bd00e38217d,500.0,3,8.0,10.0,pending,2025-06-26 13:28:08.309,,,,Junaid Khan,jk23006745@gmail.com,
+685d44166f747bd00e38217d,12000.0,3,8.0,240.0,approved,2025-06-26 13:30:06.438,122,324355454545454,uploads/20250626_133017_cast.jpg,Junaid Khan,jk23006745@gmail.com,2025-06-26 13:33:48.641
+685d4da08fcd9b9387787a48,1200.0,3,8.0,24.0,rejected,2025-06-26 13:41:03.117,78545,89y0ouhou0,uploads/20250626_134116_Pi7_Passport_Photo.jpeg,hahalo,hahalo@gmail.com,2025-06-26 13:42:25.139

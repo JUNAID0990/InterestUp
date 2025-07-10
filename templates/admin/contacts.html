@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Requests - Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2>Contact Requests</h2>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">User Contact Messages</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.message }}</td>
+                        <td>{{ contact.submitted_at.strftime('%Y-%m-%d %H:%M') if contact.submitted_at else '-' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">No contact requests found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

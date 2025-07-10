@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Proof - Investment Platform{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Upload Payment Proof</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <strong>Interest Calculation:</strong> You will earn <b>25% of your principal amount daily</b>.<br>
+                    <strong>Deposit Amount:</strong> ₹{{ "%.2f"|format(deposit.amount) }}<br>
+                    <strong>Expected Daily Interest:</strong> ₹{{ "%.2f"|format(deposit.amount * 0.25) }}<br>
+                    <strong>Note:</strong> You will continue to receive 25% of your deposit amount every day for as long as the platform operates. Previous investments keep their original rate.
+                </div>
+                <form method="POST" enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <label for="product_id" class="form-label">Product ID</label>
+                        <input type="text" class="form-control" id="product_id" name="product_id" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="screenshot" class="form-label">Payment Screenshot</label>
+                        <input type="file" class="form-control" id="screenshot" name="screenshot" accept=".jpg,.jpeg,.png,.webp" required>
+                        <small class="text-muted">Supported formats: JPG, PNG, WEBP</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="note" class="form-label">Note (optional)</label>
+                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Submit Proof</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
